@@ -13,9 +13,9 @@ public class Usuario {
     
     private String login;
     private String senha;
-    private Permissao permissao;
+    private boolean permissao;
     
-    public Usuario(String login, String senha, Permissao permissao) {
+    public Usuario(String login, String senha, boolean permissao) {
         this.login = login;
         this.senha = senha;
         this.permissao = permissao;
@@ -38,11 +38,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Permissao getPermissao() {
+    public boolean getPermissao() {
         return permissao;
     }
 
-    public void setPermissao(Permissao permissao) {
+    public void setPermissao(boolean permissao) {
         this.permissao = permissao;
     }
     
