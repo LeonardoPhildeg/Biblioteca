@@ -5,16 +5,19 @@
  */
 package telas;
 
+import controladores.ControladorPrincipal;
+
 /**
  *
  * @author leonardophildeg
  */
 public class TelaFuncionario extends javax.swing.JPanel {
 
-    /**
-     * Creates new form FuncionarioEditor
-     */
-    public TelaFuncionario() {
+    private ControladorPrincipal ctrl_principal;
+    
+    
+    public TelaFuncionario(ControladorPrincipal ctrl_principal) {
+        this.ctrl_principal = ctrl_principal;
         initComponents();
     }
 
@@ -135,4 +138,10 @@ public class TelaFuncionario extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+    
+    public void exibeTela() {
+        setVisible(true);
+    }
+    
+    
 }

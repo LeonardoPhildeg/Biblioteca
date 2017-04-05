@@ -37,7 +37,7 @@ public class TelaAcesso extends javax.swing.JFrame {
         jtfUsuario = new javax.swing.JTextField();
         jbEntrar = new javax.swing.JButton();
         jbSair = new javax.swing.JButton();
-        jtfSenha = new javax.swing.JTextField();
+        jpfSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,7 +83,7 @@ public class TelaAcesso extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfUsuario)
-                            .addComponent(jtfSenha))))
+                            .addComponent(jpfSenha))))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
@@ -102,10 +102,10 @@ public class TelaAcesso extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbEntrar)
                     .addComponent(jbSair))
@@ -135,15 +135,15 @@ public class TelaAcesso extends javax.swing.JFrame {
     }//GEN-LAST:event_jbSairActionPerformed
 
     private void jbEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarActionPerformed
-        String usuario = jtfUsuario.getText();
-        String senha = jtfSenha.getText();
-        boolean logar = false;
-        logar = ctrl_acesso.logar(usuario, senha);
+        boolean usuario = ctrl_acesso.logar(jtfUsuario.getText(), (new String (jpfSenha.getPassword())));
+        boolean logar = ctrl_acesso.getPermissao(jtfUsuario.getText()); 
         
-        if(logar) {
-            JOptionPane.showMessageDialog(null, "Login feito com sucesso");
+        if(usuario) {
+            if (logar) {
+                ctrl_acesso.exibeTelaGerente();
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Falha no login");
+            ctrl_acesso.exibeTelaFunc();
         }
         
     }//GEN-LAST:event_jbEntrarActionPerformed
@@ -164,7 +164,7 @@ public class TelaAcesso extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbEntrar;
     private javax.swing.JButton jbSair;
-    private javax.swing.JTextField jtfSenha;
+    private javax.swing.JPasswordField jpfSenha;
     private javax.swing.JTextField jtfUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,5 +32,17 @@ public class ControladorAcesso {
     public boolean logar(String usuario, String senha) {
        return ctrl_principal.logar(usuario, senha);
     }
+
+    public boolean getPermissao(String usuario) {
+        return ctrl_principal.getPermissao(usuario);
+    }
+
+    public void exibeTelaGerente() {
+        ctrl_principal.exibeTelaGerente();
+    }
+
+    public void exibeTelaFunc() {
+        ctrl_principal.exibeTelaFunc();
+    }
     
 }
