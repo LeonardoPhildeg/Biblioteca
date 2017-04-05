@@ -150,8 +150,9 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         String autor = jtAutor.getText();
         int codigo = Integer.parseInt(jtCodigo.getText());
         boolean disponibilidade;
-        //Testar para ver se o método abaixo funciona
-        if(jcbDisponibilidade.getToolTipText() == "Sim"){
+        String value = jcbDisponibilidade.getSelectedItem().toString();
+        
+        if(value == "Sim"){
             disponibilidade = true;
         }else{
             disponibilidade = false;
