@@ -41,7 +41,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jtfNome = new javax.swing.JTextField();
         jtfMatricula = new javax.swing.JTextField();
         jbCadastrar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,7 +98,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Voltar");
+        jbCancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,7 +107,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(jbCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbCadastrar))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -120,7 +120,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCadastrar)
-                    .addComponent(jButton2))
+                    .addComponent(jbCancelar))
                 .addGap(13, 13, 13))
         );
 
@@ -151,11 +151,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbCadastrar;
+    private javax.swing.JButton jbCancelar;
     private javax.swing.JTextField jtfMatricula;
     private javax.swing.JTextField jtfNome;
     // End of variables declaration//GEN-END:variables

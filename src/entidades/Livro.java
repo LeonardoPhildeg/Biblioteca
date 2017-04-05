@@ -20,7 +20,7 @@ public class Livro {
         this.nome = nome;
         this.codigo = codigo;
         this.autor = autor;
-        this.disponivel = false;
+        this.disponivel = true;
     }
 
     public String getNome() {

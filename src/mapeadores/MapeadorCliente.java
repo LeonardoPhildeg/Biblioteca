@@ -42,10 +42,10 @@ public class MapeadorCliente implements Serializable {
         try (FileOutputStream fos = new FileOutputStream(filename); ObjectOutputStream os = new ObjectOutputStream(fos);) {            
             os.writeObject(clientes);
         } catch (FileNotFoundException ex ) {
-            System.out.println("Erro ao abrir arquivo de Funcionarios: " + filename + " " + ex.getMessage());
+            System.out.println("Erro ao abrir arquivo de Clientes: " + filename + " " + ex.getMessage());
             this.clientes = new HashMap<>();
         } catch (IOException ex) {
-            System.out.println("Erro ao abrir arquivo de Funcionarios: " + filename + " " + ex.getMessage());
+            System.out.println("Erro ao abrir arquivo de Clientes: " + filename + " " + ex.getMessage());
             this.clientes = new HashMap<>();
         }
     }
@@ -55,12 +55,12 @@ public class MapeadorCliente implements Serializable {
         try (FileInputStream fis = new FileInputStream(filename);ObjectInputStream oi = new ObjectInputStream(fis);) { //são closeable, não precisa do oi.close e fis.close
             this.clientes = (HashMap<Integer, Cliente>) oi.readObject(); 
         } catch (ClassNotFoundException ex) {
-            System.out.println("Tipo de classe arquivo de Funcionarios: " + filename + " " + ex.getMessage());
+            System.out.println("Tipo de classe arquivo de Clientes: " + filename + " " + ex.getMessage());
         } catch (FileNotFoundException ex) {
-            System.out.println("Erro ao carregar arquivo de Funcionarios: " + filename + " " + ex.getMessage());
+            System.out.println("Erro ao carregar arquivo de Clientes: " + filename + " " + ex.getMessage());
             this.clientes = new HashMap<>();
         } catch (IOException ex) {
-            System.out.println("Erro ao carregar arquivo de Funcionarios: " + filename + " " + ex.getMessage());
+            System.out.println("Erro ao carregar arquivo de Clientes: " + filename + " " + ex.getMessage());
             this.clientes = new HashMap<>();
         }
     }
