@@ -76,4 +76,7 @@ public class ControladorPrincipal {
         telaGerente.exibeTela();
     }
     
+    public void exibeTelaCadastroCliente(){
+        ctrl_cadastro_cliente.exibirTela();
+    }
 }
