@@ -61,7 +61,7 @@ public class MapeadorLivro implements Serializable{
         } catch (ClassNotFoundException ex) {
             System.out.println("Tipo de classe arquivo de Livros: " + filename + " " + ex.getMessage());
         } catch (FileNotFoundException ex) {
-            System.out.println("Erro ao carregar arquivo de Livros: " + filename + " " + ex.getMessage());
+            System.out.println("Erro ao carregar: " + filename + " " + ex.getMessage());
             this.livros = new HashMap<>();
         } catch (IOException ex) {
             System.out.println("Erro ao carregar arquivo de Livros: " + filename + " " + ex.getMessage());

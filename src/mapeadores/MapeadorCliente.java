@@ -48,6 +48,7 @@ public class MapeadorCliente implements Serializable {
             System.out.println("Erro ao abrir arquivo de Clientes: " + filename + " " + ex.getMessage());
             this.clientes = new HashMap<>();
         }
+        imprime();
     }
     
     
@@ -77,5 +78,10 @@ public class MapeadorCliente implements Serializable {
     public boolean existeMatricula(int matricula){
         return clientes.containsKey(matricula);
     }
-
+    
+    public void imprime(){
+        for (Cliente object : clientes.values()) {
+            System.out.println(object.getNome());
+        }
+    }
 }

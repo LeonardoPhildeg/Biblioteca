@@ -23,9 +23,9 @@ public class ControladorCadastroLivro {
     
     
     public ControladorCadastroLivro(ControladorPrincipal ctrl_controlador_principal) throws IOException, FileNotFoundException, ClassNotFoundException{
+        this.ctrl_controlador_principal = ctrl_controlador_principal;
         this.map = new MapeadorLivro();
         this.telaCadastroLivro = new TelaCadastroLivro(this);
-        this.ctrl_controlador_principal = ctrl_controlador_principal;
     }
     
     public void cadastrarLivro(String nome, int codigo, String autor, boolean disponivel) throws IOException{

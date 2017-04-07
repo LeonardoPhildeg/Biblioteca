@@ -23,9 +23,10 @@ public class ControladorCadastroCliente {
     
     
     public ControladorCadastroCliente(ControladorPrincipal ctrl_controlador_principal) throws IOException, FileNotFoundException, ClassNotFoundException{
+        this.ctrl_controlador_principal = ctrl_controlador_principal;
         this.map = new MapeadorCliente();
         this.telaCadastroCliente = new TelaCadastroCliente(this);
-        this.ctrl_controlador_principal = ctrl_controlador_principal;
+        
     }
     
     
