@@ -69,6 +69,11 @@ public class TelaGerente extends javax.swing.JFrame {
         jbDevolver.setText("Devolução");
 
         jbCadastrar.setText("Cadastrar Livro");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Excluir Livro");
 
@@ -159,6 +164,10 @@ public class TelaGerente extends javax.swing.JFrame {
     private void jbCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarClienteActionPerformed
         ctrl_principal.exibeTelaCadastroCliente();
     }//GEN-LAST:event_jbCadastrarClienteActionPerformed
+
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+        ctrl_principal.exibeTelaCadastroLivro();
+    }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**
      * @param args the command line arguments

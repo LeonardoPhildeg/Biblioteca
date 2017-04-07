@@ -6,6 +6,7 @@
 package telas;
 
 import controladores.ControladorCadastroLivro;
+import excecoes.CampoVazioException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -148,6 +149,10 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
     private void jbCadastarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastarActionPerformed
         String nome = jtNome.getText();
         String autor = jtAutor.getText();
+        try{
+            if(jtCodigo.getText().isEmpty()){
+                throw new CampoVazioException();
+            }
         int codigo = Integer.parseInt(jtCodigo.getText());
         boolean disponibilidade;
         String value = jcbDisponibilidade.getSelectedItem().toString();
@@ -157,12 +162,18 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         }else{
             disponibilidade = false;
         }
-        try {
+            if(nome.isEmpty() || autor.isEmpty()){
+                throw new CampoVazioException();
+            }
             controladorCadastroLivro.cadastrarLivro(nome, codigo, autor, disponibilidade);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
 
         } catch (IOException ex) {
             Logger.getLogger(TelaCadastroLivro.class.getName()).log(Level.SEVERE, null, ex);
+            limparCampos();
+        } catch (CampoVazioException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            limparCampos();
         }
         
     }//GEN-LAST:event_jbCadastarActionPerformed
@@ -170,7 +181,11 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
+    public void limparCampos(){
+        jtAutor.setText("");
+        jtCodigo.setText("");
+        jtNome.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

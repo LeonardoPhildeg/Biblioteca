@@ -6,6 +6,7 @@
 package telas;
 
 import controladores.ControladorCadastroCliente;
+import excecoes.CampoVazioException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -139,13 +140,23 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
         String nome = jtfNome.getText();
+        try{
+            if(jtfMatricula.getText().isEmpty()){
+            throw new CampoVazioException();
+        }
         int matricula = Integer.parseInt(jtfMatricula.getText());
         
-        try {
+            if(nome.isEmpty()){
+                throw new CampoVazioException();
+            }
             controladorCadastroCliente.criarCliente(nome, matricula);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
         } catch (IOException ex) {
             Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+            limparCampos();
+        } catch (CampoVazioException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            limparCampos();
         }
         
         
@@ -159,6 +170,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 
+    
+    public void limparCampos(){
+        jtfNome.setText("");
+        jtfMatricula.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
