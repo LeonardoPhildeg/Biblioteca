@@ -81,5 +81,8 @@ public class MapeadorLivro implements Serializable{
     public boolean existeCodigo(int codigo){
         return livros.containsKey(codigo);
     }
-            
+    
+    public boolean existeNome(String nome){
+        return livros.containsValue(nome);
+    }
 }

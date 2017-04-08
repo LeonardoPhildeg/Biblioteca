@@ -5,6 +5,7 @@
  */
 package controladores;
 
+import entidades.Cliente;
 import entidades.Usuario;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class ControladorPrincipal {
     private TelaGerente telaGerente;
     private TelaFuncionario telaFunc;
     private ControladorCadastroLivro ctrl_cadastro_livro;
+    private ControladorEmprestimo ctrl_emprestimo;
 
     public ControladorPrincipal() throws IOException, FileNotFoundException, ClassNotFoundException {
         this.ctrl_acesso = new ControladorAcesso(this);
@@ -32,6 +34,7 @@ public class ControladorPrincipal {
         this.usuarios = new ArrayList<>();
         this.ctrl_cadastro_cliente = new ControladorCadastroCliente(this);
         this.ctrl_cadastro_livro = new ControladorCadastroLivro(this);
+        this.ctrl_emprestimo = new ControladorEmprestimo(this);
     }
     
     public void inicia() {
@@ -85,4 +88,9 @@ public class ControladorPrincipal {
     public void exibeTelaCadastroLivro(){
         ctrl_cadastro_livro.exibirTela();
     }
+    
+    public void getCliente(int matricula){
+        ctrl_cadastro_cliente.getMatricula(matricula);
+    }
+    
 }
