@@ -36,7 +36,7 @@ public class TelaGerente extends javax.swing.JFrame {
         jbEmprestar = new javax.swing.JButton();
         jbDevolver = new javax.swing.JButton();
         jbCadastrar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jbExcluirLivro = new javax.swing.JButton();
         jbCadastrarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,7 +75,7 @@ public class TelaGerente extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Excluir Livro");
+        jbExcluirLivro.setText("Excluir Livro");
 
         jbCadastrarCliente.setText("Cadastrar Cliente");
         jbCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -90,16 +90,15 @@ public class TelaGerente extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1065, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(jbCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbExcluirLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
+                        .addGap(34, 34, 34)
+                        .addComponent(jbCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
                         .addComponent(jbEmprestar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
                         .addComponent(jbDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -115,7 +114,7 @@ public class TelaGerente extends javax.swing.JFrame {
                     .addComponent(jbEmprestar)
                     .addComponent(jbDevolver)
                     .addComponent(jbCadastrar)
-                    .addComponent(jButton4)
+                    .addComponent(jbExcluirLivro)
                     .addComponent(jbCadastrarCliente))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -175,7 +174,6 @@ public class TelaGerente extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -184,9 +182,12 @@ public class TelaGerente extends javax.swing.JFrame {
     private javax.swing.JButton jbCadastrarCliente;
     private javax.swing.JButton jbDevolver;
     private javax.swing.JButton jbEmprestar;
+    private javax.swing.JButton jbExcluirLivro;
     // End of variables declaration//GEN-END:variables
     
-    public void exibeTela() {
+    public void exibeTelaFunc() {
+        jbCadastrar.setVisible(false);
+        jbExcluirLivro.setVisible(false);
         setVisible(true);
     }
 }
