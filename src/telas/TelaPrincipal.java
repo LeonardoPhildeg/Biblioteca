@@ -22,6 +22,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal(ControladorPrincipal ctrl_principal) {
         this.ctrl_principal = ctrl_principal;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -78,8 +79,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jbExcluirLivro.setText("Excluir Livro");
+        jbExcluirLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExcluirLivroActionPerformed(evt);
+            }
+        });
 
-        jbCadastrarCliente.setText("Cadastrar Cliente");
+        jbCadastrarCliente.setText("Gerenciar Cliente");
         jbCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCadastrarClienteActionPerformed(evt);
@@ -145,7 +151,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,26 +160,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1191, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 12, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(12, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 13, Short.MAX_VALUE)))
+                    .addContainerGap(13, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 731, Short.MAX_VALUE)
+            .addGap(0, 559, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarClienteActionPerformed
-        ctrl_principal.exibeTelaCadastroCliente();
+        ctrl_principal.exibeListaCliente();
     }//GEN-LAST:event_jbCadastrarClienteActionPerformed
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
@@ -183,6 +189,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jbAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarActionPerformed
         listarLivros();
     }//GEN-LAST:event_jbAtualizarActionPerformed
+
+    private void jbExcluirLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirLivroActionPerformed
+        DefaultTableModel modelTb = (DefaultTableModel) jTable1.getModel();
+        System.out.println(Integer.parseInt(modelTb.getValueAt(jTable1.getSelectedRow(), 1).toString()));
+        ctrl_principal.excluirLivro(Integer.parseInt(modelTb.getValueAt(jTable1.getSelectedRow(), 1).toString()));
+        listarLivros();
+    }//GEN-LAST:event_jbExcluirLivroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,7 +235,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
             for(int i = 0; i < modelTb.getRowCount(); i++) {
                 if (Integer.parseInt(modelTb.getValueAt(i, 1).toString())==livro.getCodigo()){
-                    encontrou =true;
+                    encontrou = true;
                 }
             }
             if (!encontrou){
@@ -230,7 +243,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }  
         }//fim do for
         if (tamanhoTabela >= modelTb.getRowCount()){
-            JOptionPane.showMessageDialog(this, "Não existe algo para atualziar");
+            JOptionPane.showMessageDialog(this, "Não existe algo para atualizar");
         }
     }
+
 }

@@ -8,6 +8,7 @@ package controladores;
 import entidades.Cliente;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Collection;
 import mapeadores.MapeadorCliente;
 import telas.TelaCadastroCliente;
 
@@ -54,6 +55,10 @@ public class ControladorCadastroCliente {
     
     public void exibirTela(){
         telaCadastroCliente.setVisible(true);
+    }
+
+    public Collection<Cliente> getClientes() {
+        return map.getListaClientes();
     }
     
 }

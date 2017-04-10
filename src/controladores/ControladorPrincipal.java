@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import telas.TelaListaCliente;
 import telas.TelaPrincipal;
 
 /**
@@ -24,6 +25,7 @@ public class ControladorPrincipal {
     private ArrayList <Usuario> usuarios;
     private ControladorCadastroCliente ctrl_cadastro_cliente;
     private TelaPrincipal telaGerente;
+    private TelaListaCliente telaListaCliente;
     private ControladorCadastroLivro ctrl_cadastro_livro;
     private ControladorEmprestimo ctrl_emprestimo;
 
@@ -32,6 +34,7 @@ public class ControladorPrincipal {
         this.ctrl_cadastro_cliente = new ControladorCadastroCliente(this);
         this.ctrl_cadastro_livro = new ControladorCadastroLivro(this);
         this.ctrl_emprestimo = new ControladorEmprestimo(this);
+        this.telaListaCliente = new TelaListaCliente(this);
         this.telaGerente = new TelaPrincipal(this);
         this.usuarios = new ArrayList<>();
 
@@ -96,7 +99,17 @@ public class ControladorPrincipal {
     public Collection<Livro> getLivros() {
         return ctrl_cadastro_livro.getLivros();
     }
+
+    public void exibeListaCliente() {
+        telaListaCliente.setVisible(true);
+    }
     
-    
+    public Collection<Cliente> getClientes() {
+        return ctrl_cadastro_cliente.getClientes();
+    }
+
+    public void excluirLivro(int codLivro) {
+        ctrl_cadastro_livro.excluirLivro(codLivro);
+    }
     
 }
