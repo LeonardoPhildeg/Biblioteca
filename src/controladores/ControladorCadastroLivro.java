@@ -51,7 +51,16 @@ public class ControladorCadastroLivro {
         telaCadastroLivro.setVisible(true);
     }
 
+
     public Collection<Livro> getLivros() {
         return map.getListaLivros();
+    }
+    
+    public Livro getLivro(int codigoLivro) throws Exception{
+        if(map.existeCodigo(codigoLivro)){
+            return map.get(codigoLivro);
+        } else{
+            throw new Exception("Livro não existe");
+        }
     }
 }

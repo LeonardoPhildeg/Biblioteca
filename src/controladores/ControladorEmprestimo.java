@@ -8,6 +8,9 @@ package controladores;
 import entidades.Cliente;
 import entidades.Emprestimo;
 import entidades.Livro;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import mapeadores.MapeadorEmprestimo;
 import mapeadores.MapeadorLivro;
 import telas.TelaEmprestimo;
 
@@ -19,14 +22,12 @@ public class ControladorEmprestimo {
     
     private ControladorPrincipal ctrl_principal;
     private TelaEmprestimo telaEmprestimo;
-    private Cliente clienteEmprestimo;
-//    private MapeadorEmprestimo map;
-    private MapeadorLivro mapLivro;
+    private MapeadorEmprestimo map;
     
     
     public ControladorEmprestimo(ControladorPrincipal ctrl_principal){
-        this.ctrl_principal = ctrl_principal;
-//        this.map = new MapeadorEmprestimo();
+        this.ctrl_principal = ctrl_principal;       
+        this.map = new MapeadorEmprestimo();
         this.telaEmprestimo = new TelaEmprestimo(this);
         
     }
@@ -34,15 +35,16 @@ public class ControladorEmprestimo {
     
 
     
-    public void CadastrarEmprestimo(Object livro, Object cliente){
+    public void CadastrarEmprestimo(Integer indiceLivro, Integer indiceCliente){
         
-        Livro livroEmprestado = (Livro) livro;
-        Cliente clienteEmprestimo = (Cliente) cliente;
-        
-        Emprestimo novo = new Emprestimo(livroEmprestado, clienteEmprestimo);
-        livroEmprestado.setDisponivel(false);
-        System.out.println(novo.getLivroEmprestado() + "" + novo.getCliente());
-        
+        try {
+            Livro livro = ctrl_principal.getControladorCadastroLivro().getLivro(indiceLivro);
+            Cliente cliente = ctrl_principal.getControladorCadastroCliente().getMatricula(indiceCliente);
+            Emprestimo novo = new Emprestimo(livro, cliente);
+            livro.setDisponivel(false);
+            System.out.println(novo.getLivroEmprestado() + "" + novo.getCliente());
+        } catch (Exception ex) {
+        }
         
     }
     
