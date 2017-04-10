@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package mapeadores;
+import controladores.ControladorCadastroLivro;
 import entidades.Cliente;
 import java.util.HashMap;
 import entidades.Livro;
@@ -39,6 +40,7 @@ public class MapeadorLivro implements Serializable{
     }
     
     public void put(Livro livro){
+        listarLivros();
         this.livros.put(livro.getCodigo(), livro);
     }
     
@@ -71,7 +73,7 @@ public class MapeadorLivro implements Serializable{
     
     
     public Collection <Livro> getListaLivros(){
-        return livros.values();
+        return this.livros.values();
     }
     
     public void excluirLivro(int codigo){
@@ -84,5 +86,11 @@ public class MapeadorLivro implements Serializable{
     
     public boolean existeNome(String nome){
         return livros.containsValue(nome);
+    }
+
+    private void listarLivros() {
+        for (Livro livro: livros.values()) {
+            System.out.println("nome: " + livro.getNome());
+        }
     }
 }

@@ -6,12 +6,13 @@
 package controladores;
 
 import entidades.Cliente;
+import entidades.Livro;
 import entidades.Usuario;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import telas.TelaFuncionario;
-import telas.TelaGerente;
+import java.util.Collection;
+import telas.TelaPrincipal;
 
 /**
  *
@@ -22,19 +23,18 @@ public class ControladorPrincipal {
     private ControladorAcesso ctrl_acesso;
     private ArrayList <Usuario> usuarios;
     private ControladorCadastroCliente ctrl_cadastro_cliente;
-    private TelaGerente telaGerente;
-    private TelaFuncionario telaFunc;
+    private TelaPrincipal telaGerente;
     private ControladorCadastroLivro ctrl_cadastro_livro;
     private ControladorEmprestimo ctrl_emprestimo;
 
     public ControladorPrincipal() throws IOException, FileNotFoundException, ClassNotFoundException {
         this.ctrl_acesso = new ControladorAcesso(this);
-        this.telaGerente = new TelaGerente(this);
-        this.telaFunc = new TelaFuncionario(this);
-        this.usuarios = new ArrayList<>();
         this.ctrl_cadastro_cliente = new ControladorCadastroCliente(this);
         this.ctrl_cadastro_livro = new ControladorCadastroLivro(this);
         this.ctrl_emprestimo = new ControladorEmprestimo(this);
+        this.telaGerente = new TelaPrincipal(this);
+        this.usuarios = new ArrayList<>();
+
     }
     
     public void inicia() {
@@ -92,5 +92,11 @@ public class ControladorPrincipal {
     public void getCliente(int matricula){
         ctrl_cadastro_cliente.getMatricula(matricula);
     }
+
+    public Collection<Livro> getLivros() {
+        return ctrl_cadastro_livro.getLivros();
+    }
+    
+    
     
 }
