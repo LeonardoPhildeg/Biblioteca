@@ -93,4 +93,11 @@ public class ControladorPrincipal {
         ctrl_cadastro_cliente.getMatricula(matricula);
     }
     
+    public ControladorCadastroLivro getControladorCadastroLivro(){
+        return this.ctrl_cadastro_livro;
+    }
+    public ControladorCadastroCliente getControladorCadastroCliente(){
+        return this.ctrl_cadastro_cliente;
+    }
+    
 }

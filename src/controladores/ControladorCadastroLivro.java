@@ -49,4 +49,12 @@ public class ControladorCadastroLivro {
     public void exibirTela(){
         telaCadastroLivro.setVisible(true);
     }
+    
+    public Livro getLivro(int codigoLivro) throws Exception{
+        if(map.existeCodigo(codigoLivro)){
+            return map.get(codigoLivro);
+        } else{
+            throw new Exception("Livro não existe");
+        }
+    }
 }
