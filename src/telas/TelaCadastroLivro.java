@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -43,7 +44,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         jbCadastar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -112,6 +113,11 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         });
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,7 +163,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         boolean disponibilidade;
         String value = jcbDisponibilidade.getSelectedItem().toString();
         
-        if(value == "Sim"){
+        if(value.equals("Sim")){
             disponibilidade = true;
         }else{
             disponibilidade = false;
@@ -167,7 +173,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
             }
             controladorCadastroLivro.cadastrarLivro(nome, codigo, autor, disponibilidade);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
-
+            limparCampos();
         } catch (IOException ex) {
             Logger.getLogger(TelaCadastroLivro.class.getName()).log(Level.SEVERE, null, ex);
             limparCampos();
@@ -177,6 +183,10 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jbCadastarActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
      * @param args the command line arguments

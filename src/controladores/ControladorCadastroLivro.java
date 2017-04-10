@@ -9,6 +9,7 @@ import mapeadores.MapeadorLivro;
 import entidades.Livro;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Collection;
 import telas.TelaCadastroLivro;
 
 /**
@@ -48,6 +49,11 @@ public class ControladorCadastroLivro {
     
     public void exibirTela(){
         telaCadastroLivro.setVisible(true);
+    }
+
+
+    public Collection<Livro> getLivros() {
+        return map.getListaLivros();
     }
     
     public Livro getLivro(int codigoLivro) throws Exception{

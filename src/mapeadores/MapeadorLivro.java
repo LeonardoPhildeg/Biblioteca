@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package mapeadores;
+import controladores.ControladorCadastroLivro;
 import entidades.Cliente;
 import java.util.HashMap;
 import entidades.Livro;
@@ -71,7 +72,7 @@ public class MapeadorLivro implements Serializable{
     
     
     public Collection <Livro> getListaLivros(){
-        return livros.values();
+        return this.livros.values();
     }
     
     public void excluirLivro(int codigo){
