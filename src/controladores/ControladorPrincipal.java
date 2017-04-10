@@ -66,7 +66,7 @@ public class ControladorPrincipal {
     public boolean getPermissao(String usuario) {
         for (Usuario user : usuarios) {
             if (user.getLogin().equals(usuario)) {
-                return true;
+                return user.getPermissao();
             }
         }
         
@@ -74,11 +74,11 @@ public class ControladorPrincipal {
     }
 
     public void exibeTelaFunc() {
-        telaFunc.exibeTela();
+        telaGerente.exibeTelaFunc();
     }
 
     public void exibeTelaGerente() {
-        telaGerente.exibeTela();
+        telaGerente.setVisible(true);
     }
     
     public void exibeTelaCadastroCliente(){

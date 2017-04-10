@@ -141,10 +141,10 @@ public class TelaAcesso extends javax.swing.JFrame {
         if(usuario) {
             if (logar) {
                 ctrl_acesso.exibeTelaGerente();
+            } else {
+                ctrl_acesso.exibeTelaFunc();
             }
-        } else {
-            ctrl_acesso.exibeTelaFunc();
-        }
+        } 
         
     }//GEN-LAST:event_jbEntrarActionPerformed
 

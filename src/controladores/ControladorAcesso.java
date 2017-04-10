@@ -22,9 +22,6 @@ public class ControladorAcesso {
         
     }
     
-    
-    
-
     public void exibeTela() {
         tela_acesso.exibeTela();
     }
