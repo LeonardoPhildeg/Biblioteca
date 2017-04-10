@@ -40,7 +40,6 @@ public class MapeadorLivro implements Serializable{
     }
     
     public void put(Livro livro){
-        listarLivros();
         this.livros.put(livro.getCodigo(), livro);
     }
     
@@ -86,11 +85,5 @@ public class MapeadorLivro implements Serializable{
     
     public boolean existeNome(String nome){
         return livros.containsValue(nome);
-    }
-
-    private void listarLivros() {
-        for (Livro livro: livros.values()) {
-            System.out.println("nome: " + livro.getNome());
-        }
     }
 }

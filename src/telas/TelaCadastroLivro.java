@@ -162,7 +162,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         boolean disponibilidade;
         String value = jcbDisponibilidade.getSelectedItem().toString();
         
-        if(value == "Sim"){
+        if(value.equals("Sim")){
             disponibilidade = true;
         }else{
             disponibilidade = false;
@@ -172,7 +172,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
             }
             controladorCadastroLivro.cadastrarLivro(nome, codigo, autor, disponibilidade);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
-
+            limparCampos();
         } catch (IOException ex) {
             Logger.getLogger(TelaCadastroLivro.class.getName()).log(Level.SEVERE, null, ex);
             limparCampos();

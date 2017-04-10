@@ -7,6 +7,7 @@ package telas;
 
 import controladores.ControladorPrincipal;
 import entidades.Livro;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class TelaPrincipal extends javax.swing.JFrame {
 
     private ControladorPrincipal ctrl_principal;
+    private int contador = 1;
     
     public TelaPrincipal(ControladorPrincipal ctrl_principal) {
         this.ctrl_principal = ctrl_principal;
@@ -208,14 +210,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void listarLivros() {
         DefaultTableModel modelTb = (DefaultTableModel) jTable1.getModel();
+        int tamanhoTabela = modelTb.getRowCount();
+        boolean encontrou;
         for (Livro livro: ctrl_principal.getLivros()) {
+            encontrou = false;
             String disponibilidade;
             if (livro.isDisponivel()) {
                 disponibilidade = "Disponível";
             } else {
                 disponibilidade = "Emprestado";
             }
+            for(int i = 0; i < modelTb.getRowCount(); i++) {
+                if (Integer.parseInt(modelTb.getValueAt(i, 1).toString())==livro.getCodigo()){
+                    encontrou =true;
+                }
+            }
+            if (!encontrou){
                 modelTb.addRow(new Object[]{livro.getNome(), livro.getCodigo(), livro.getAutor(), disponibilidade});
-        } 
+            }  
+        }//fim do for
+        if (tamanhoTabela >= modelTb.getRowCount()){
+            JOptionPane.showMessageDialog(this, "Não existe algo para atualziar");
+        }
     }
 }
