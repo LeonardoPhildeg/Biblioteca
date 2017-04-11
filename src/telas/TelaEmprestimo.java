@@ -18,6 +18,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
     public TelaEmprestimo(ControladorEmprestimo ctControladorEmprestimo) {
         this.ctrl_emprestimo = ctrl_emprestimo;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

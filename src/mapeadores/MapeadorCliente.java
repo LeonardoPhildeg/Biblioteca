@@ -84,4 +84,8 @@ public class MapeadorCliente implements Serializable {
             System.out.println(object.getNome());
         }
     }
+    
+    public void remove(int codCliente) {
+        clientes.remove(codCliente);
+    }
 }

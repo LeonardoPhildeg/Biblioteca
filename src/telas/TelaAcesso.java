@@ -19,6 +19,7 @@ public class TelaAcesso extends javax.swing.JFrame {
     public TelaAcesso(ControladorAcesso ctrl_acesso) {
         this.ctrl_acesso = ctrl_acesso;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -145,9 +146,10 @@ public class TelaAcesso extends javax.swing.JFrame {
                 ctrl_acesso.exibeTelaFunc();
             }
         } 
-        
+        setVisible(false);
     }//GEN-LAST:event_jbEntrarActionPerformed
-
+    
+    
     public void exibeTela() {
         setVisible(true);
     }

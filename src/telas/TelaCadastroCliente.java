@@ -24,7 +24,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     public TelaCadastroCliente(ControladorCadastroCliente controladorCadastroCliente) {
         this.controladorCadastroCliente = controladorCadastroCliente;
         initComponents();
-        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -151,6 +151,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
             controladorCadastroCliente.criarCliente(nome, matricula);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
+            limparCampos();
         } catch (IOException ex) {
             Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
             limparCampos();
@@ -163,7 +164,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**

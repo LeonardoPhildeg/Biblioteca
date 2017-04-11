@@ -75,8 +75,10 @@ public class MapeadorLivro implements Serializable{
         return this.livros.values();
     }
     
-    public void excluirLivro(int codigo){
+    public void excluirLivro(int codigo) throws IOException{
+        System.out.println(codigo);
         livros.remove(codigo);
+        persist();
     }
     
     public boolean existeCodigo(int codigo){

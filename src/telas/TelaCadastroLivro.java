@@ -25,6 +25,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
     public TelaCadastroLivro(ControladorCadastroLivro controladorCadastroLivro) {
         this.controladorCadastroLivro = controladorCadastroLivro;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
    
