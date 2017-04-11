@@ -43,7 +43,7 @@ public class ControladorCadastroLivro {
         map.persist();
     }
     
-    public void excluirLivro(int codigo){
+    public void excluirLivro(int codigo) throws IOException{
         map.excluirLivro(codigo);
     }
     

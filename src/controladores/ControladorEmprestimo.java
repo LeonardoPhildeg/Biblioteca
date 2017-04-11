@@ -8,6 +8,8 @@ package controladores;
 import entidades.Cliente;
 import entidades.Emprestimo;
 import entidades.Livro;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mapeadores.MapeadorEmprestimo;
@@ -25,7 +27,7 @@ public class ControladorEmprestimo {
     private MapeadorEmprestimo map;
     
     
-    public ControladorEmprestimo(ControladorPrincipal ctrl_principal){
+    public ControladorEmprestimo(ControladorPrincipal ctrl_principal) throws IOException, FileNotFoundException, ClassNotFoundException{
         this.ctrl_principal = ctrl_principal;       
         this.map = new MapeadorEmprestimo();
         this.telaEmprestimo = new TelaEmprestimo(this);
@@ -42,15 +44,35 @@ public class ControladorEmprestimo {
             Cliente cliente = ctrl_principal.getControladorCadastroCliente().getMatricula(indiceCliente);
             Emprestimo novo = new Emprestimo(livro, cliente);
             livro.setDisponivel(false);
+            put(novo);
+            persist();
             System.out.println(novo.getLivroEmprestado() + "" + novo.getCliente());
         } catch (Exception ex) {
-        }
+            }
+        
+        
         
     }
     
 
+    public void devolverLivro(Integer codigoLivro){
+        try{
+            Livro livro = ctrl_principal.getControladorCadastroLivro().getLivro(codigoLivro);
+            map.encerraEmprestimo(codigoLivro);
+            livro.setDisponivel(true);
+            
+
+        }catch(Exception ex){
+            
+        }
+    }
     
+    public void put(Emprestimo emprestimo){
+        map.put(emprestimo);
+    }
     
-    
+    public void persist() throws IOException{
+        map.persist();
+    }
     
 }
