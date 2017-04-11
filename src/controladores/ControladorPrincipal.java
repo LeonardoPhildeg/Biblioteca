@@ -119,5 +119,9 @@ public class ControladorPrincipal {
     public ControladorCadastroCliente getControladorCadastroCliente(){
         return this.ctrl_cadastro_cliente;
     }
+
+    public boolean existeMatricula(Integer codCliente) {
+        return ctrl_cadastro_cliente.existeMatricula(codCliente);
+    }
     
 }

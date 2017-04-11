@@ -79,4 +79,8 @@ public class ControladorEmprestimo {
     public void exibeTelaCadastroEmprestimo(){
         telaEmprestimo.setVisible(true);
     }
+
+    public boolean existeMatricula(Integer codCliente) {
+        return ctrl_principal.existeMatricula(codCliente);
+    }
 }
