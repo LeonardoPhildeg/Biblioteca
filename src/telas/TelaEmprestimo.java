@@ -22,7 +22,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
     private MapeadorCliente map;
 
     public TelaEmprestimo(ControladorEmprestimo ctControladorEmprestimo) {
-        this.ctrl_emprestimo = ctrl_emprestimo;
+        this.ctrl_emprestimo = ctControladorEmprestimo;
         initComponents();
         this.setLocationRelativeTo(null);
     }
