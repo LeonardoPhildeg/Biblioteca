@@ -141,16 +141,20 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         Integer codLivro = Integer.parseInt(jtfCodLivro.getText());
         Integer codCliente = Integer.parseInt(jtfCodCliente.getText());
             
-//            if(!map.existeMatricula(codCliente)){
-//                throw new ClienteInexistenteException();
-//            }
+            if(!ctrl_emprestimo.existeMatricula(codCliente)){
+                throw new ClienteInexistenteException();
+           }
             ctrl_emprestimo.cadastrarEmprestimo(codLivro, codCliente);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
 
-        } catch (CampoVazioException ex) {
+        } catch (CampoVazioException | ClienteInexistenteException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
             limparCampos();
-        } 
+        }
+//        catch (ClienteInexistenteException ex) {
+//            JOptionPane.showMessageDialog(null, ex.getMessage());
+//        }
+        
 //        catch (ClienteInexistenteException ex) {
 //            JOptionPane.showMessageDialog(null, ex.getMessage());
 //        } 

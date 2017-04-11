@@ -60,5 +60,9 @@ public class ControladorCadastroCliente {
     public Collection<Cliente> getClientes() {
         return map.getListaClientes();
     }
+
+    boolean existeMatricula(Integer codCliente) {
+        return map.existeMatricula(codCliente);
+    }
     
 }

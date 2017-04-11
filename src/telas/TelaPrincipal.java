@@ -202,10 +202,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbAtualizarActionPerformed
 
     private void jbExcluirLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirLivroActionPerformed
-        DefaultTableModel modelTb = (DefaultTableModel) jTable1.getModel();
-        System.out.println(Integer.parseInt(modelTb.getValueAt(jTable1.getSelectedRow(), 1).toString()));
         try {
+            DefaultTableModel modelTb = (DefaultTableModel) jTable1.getModel();
             ctrl_principal.excluirLivro(Integer.parseInt(modelTb.getValueAt(jTable1.getSelectedRow(), 1).toString()));
+            modelTb.removeRow(jTable1.getSelectedRow());
         } catch (IOException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
