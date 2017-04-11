@@ -108,7 +108,7 @@ public class ControladorPrincipal {
         return ctrl_cadastro_cliente.getClientes();
     }
 
-    public void excluirLivro(int codLivro) {
+    public void excluirLivro(int codLivro) throws IOException {
         ctrl_cadastro_livro.excluirLivro(codLivro);
     }
     

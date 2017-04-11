@@ -7,6 +7,9 @@ package telas;
 
 import controladores.ControladorPrincipal;
 import entidades.Livro;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -193,7 +196,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jbExcluirLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirLivroActionPerformed
         DefaultTableModel modelTb = (DefaultTableModel) jTable1.getModel();
         System.out.println(Integer.parseInt(modelTb.getValueAt(jTable1.getSelectedRow(), 1).toString()));
-        ctrl_principal.excluirLivro(Integer.parseInt(modelTb.getValueAt(jTable1.getSelectedRow(), 1).toString()));
+        try {
+            ctrl_principal.excluirLivro(Integer.parseInt(modelTb.getValueAt(jTable1.getSelectedRow(), 1).toString()));
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         listarLivros();
     }//GEN-LAST:event_jbExcluirLivroActionPerformed
 
