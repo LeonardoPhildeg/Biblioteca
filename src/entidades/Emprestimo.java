@@ -6,7 +6,9 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 /**
  *
  * @author Leonardo
@@ -22,9 +24,10 @@ public class Emprestimo implements Serializable{
     public Emprestimo (Livro livroEmprestado, Cliente cliente){
         this.livroEmprestado = livroEmprestado;
         this.cliente = cliente;
-        this.dataEmprestimo = (Date) new Date().clone();
-        this.dataPrevistaDevolucao = (Date) new Date().clone();
-        this.dataPrevistaDevolucao.setTime(dataEmprestimo.getTime() + calculaMiliSegundosPorDias(14));
+        this.dataEmprestimo = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.WEEK_OF_MONTH, 2);
+        this.dataPrevistaDevolucao = calendar.getTime();
     }
     
     
@@ -56,25 +59,24 @@ public class Emprestimo implements Serializable{
         this.cliente = cliente;
     }
     
-    private long calculaMiliSegundosPorDias(int dias){
-        return (24 * 60 * 60 * 1000) * dias;
-    }
-    
-    private long calculaDiaPorMiliSegundo(long miliSegundos){
-        long miliPorDia = (24 * 60 * 60 * 1000);
-        return (int) (miliSegundos / miliPorDia);
-    }
-    
-    public void prorrogarPrazo(int dias){
-        long previsaoAtual = dataPrevistaDevolucao.getTime();
-        this.dataPrevistaDevolucao.setTime(previsaoAtual + calculaMiliSegundosPorDias(dias));
-    }
-    
     public void encerrarEmprestimo(){
         livroEmprestado.setDisponivel(false);
-        this.dataEncerramento = (Date) new Date().clone();
+        this.dataEncerramento = new Date();
     }
     
+    public long getDiasAtraso(){
+        Date now = new Date();
+        long diff = now.getTime() - this.dataPrevistaDevolucao.getTime();
+        if(diff < 0){
+            return 0;
+        }else{
+            return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        }
+     
+    }
     
+    public double calculaMulta(){
+        return getDiasAtraso() * 1.0;
+    }
     
 }
