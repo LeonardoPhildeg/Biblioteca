@@ -27,6 +27,7 @@ public class ControladorEmprestimo {
     private MapeadorEmprestimo map;
     
     
+    
     public ControladorEmprestimo(ControladorPrincipal ctrl_principal) throws IOException, FileNotFoundException, ClassNotFoundException{
         this.ctrl_principal = ctrl_principal;       
         this.map = new MapeadorEmprestimo();
@@ -37,7 +38,7 @@ public class ControladorEmprestimo {
     
 
     
-    public void CadastrarEmprestimo(Integer indiceLivro, Integer indiceCliente){
+    public void cadastrarEmprestimo(Integer indiceLivro, Integer indiceCliente){
         
         try {
             Livro livro = ctrl_principal.getControladorCadastroLivro().getLivro(indiceLivro);
@@ -75,4 +76,7 @@ public class ControladorEmprestimo {
         map.persist();
     }
     
+    public void exibeTelaCadastroEmprestimo(){
+        telaEmprestimo.setVisible(true);
+    }
 }

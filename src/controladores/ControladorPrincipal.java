@@ -28,6 +28,7 @@ public class ControladorPrincipal {
     private TelaListaCliente telaListaCliente;
     private ControladorCadastroLivro ctrl_cadastro_livro;
     private ControladorEmprestimo ctrl_emprestimo;
+  
 
     public ControladorPrincipal() throws IOException, FileNotFoundException, ClassNotFoundException {
         this.ctrl_acesso = new ControladorAcesso(this);
@@ -35,7 +36,7 @@ public class ControladorPrincipal {
         this.ctrl_cadastro_livro = new ControladorCadastroLivro(this);
         this.ctrl_emprestimo = new ControladorEmprestimo(this);
         this.telaListaCliente = new TelaListaCliente(this);
-        this.telaGerente = new TelaPrincipal(this);
+        this.telaGerente = new TelaPrincipal(this, ctrl_emprestimo);
         this.usuarios = new ArrayList<>();
 
     }

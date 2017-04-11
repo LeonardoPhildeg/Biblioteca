@@ -5,6 +5,7 @@
  */
 package telas;
 
+import controladores.ControladorEmprestimo;
 import controladores.ControladorPrincipal;
 import entidades.Livro;
 import java.io.IOException;
@@ -21,9 +22,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private ControladorPrincipal ctrl_principal;
     private int contador = 1;
+    private ControladorEmprestimo ctrl_emprestimo;
     
-    public TelaPrincipal(ControladorPrincipal ctrl_principal) {
+    public TelaPrincipal(ControladorPrincipal ctrl_principal, ControladorEmprestimo ctrl_emprestimo) {
         this.ctrl_principal = ctrl_principal;
+        this.ctrl_emprestimo = ctrl_emprestimo;
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -71,6 +74,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jbEmprestar.setText("Empréstimo");
+        jbEmprestar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEmprestarActionPerformed(evt);
+            }
+        });
 
         jbDevolver.setText("Devolução");
 
@@ -203,6 +211,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         listarLivros();
     }//GEN-LAST:event_jbExcluirLivroActionPerformed
+
+    private void jbEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEmprestarActionPerformed
+        ctrl_emprestimo.exibeTelaCadastroEmprestimo();
+    }//GEN-LAST:event_jbEmprestarActionPerformed
 
     /**
      * @param args the command line arguments
