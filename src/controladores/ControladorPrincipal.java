@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import telas.TelaListaCliente;
 import telas.TelaPrincipal;
 
@@ -48,17 +49,6 @@ public class ControladorPrincipal {
     public void cadastrarUsuario(String login, String senha, boolean permissao) {
             Usuario usuario = new Usuario(login, senha, permissao);
             usuarios.add(usuario);
-    }
-
-    public boolean logar(String usuario, String senha) {
-        for (Usuario user : usuarios) {
-            if (user.getLogin().equals(usuario)) {
-                if(user.getSenha().equals(senha)) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
     
     public void listarUsuarios() {
@@ -102,7 +92,7 @@ public class ControladorPrincipal {
     }
 
     public void exibeListaCliente() {
-        telaListaCliente.setVisible(true);
+        telaListaCliente.exibeTela();
     }
     
     public Collection<Cliente> getClientes() {
@@ -122,6 +112,10 @@ public class ControladorPrincipal {
 
     public boolean existeMatricula(Integer codCliente) {
         return ctrl_cadastro_cliente.existeMatricula(codCliente);
+    }
+
+    public ArrayList<Usuario> getColecao() {
+        return this.usuarios;
     }
     
 }

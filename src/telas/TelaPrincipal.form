@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="formKeyPressed"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -95,10 +98,10 @@
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jbCadastrar" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="jbCadastrarCliente" min="-2" pref="144" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                              <Component id="jbEmprestar" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
+                              <Component id="jbCadastrarCliente" min="-2" pref="155" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jbEmprestar" min="-2" pref="182" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="34" max="32767" attributes="0"/>
@@ -198,7 +201,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jbCadastrarCliente">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Gerenciar Cliente"/>
+                <Property name="text" type="java.lang.String" value="Gerenciar Clientes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCadastrarClienteActionPerformed"/>

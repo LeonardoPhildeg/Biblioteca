@@ -53,6 +53,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jbAtualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Acervo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
 
@@ -95,7 +100,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbCadastrarCliente.setText("Gerenciar Cliente");
+        jbCadastrarCliente.setText("Gerenciar Clientes");
         jbCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCadastrarClienteActionPerformed(evt);
@@ -124,10 +129,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
-                        .addComponent(jbCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jbEmprestar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(159, 159, 159)))
+                        .addComponent(jbCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jbEmprestar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(127, 127, 127)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -219,6 +224,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ctrl_emprestimo.exibeTelaGerenciaEmprestimo();
     }//GEN-LAST:event_jbEmprestarActionPerformed
 
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        
+    }//GEN-LAST:event_formKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -265,9 +274,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 modelTb.addRow(new Object[]{livro.getNome(), livro.getCodigo(), livro.getAutor(), disponibilidade});
             }  
         }//fim do for
-        /*if (tamanhoTabela >= modelTb.getRowCount()){
-            JOptionPane.showMessageDialog(this, "Não existe algo para atualizar");
-        }*/
     }
 
 }
