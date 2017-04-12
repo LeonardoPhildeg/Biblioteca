@@ -166,7 +166,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfCodLivroActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        
+        dispose();
     }//GEN-LAST:event_jbCancelarActionPerformed
     
     public void limparCampos(){

@@ -6,6 +6,7 @@
 package mapeadores;
 
 import entidades.Emprestimo;
+import entidades.Livro;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -69,6 +70,10 @@ public class MapeadorEmprestimo {
     public void encerraEmprestimo(int codLivro){
             emprestimos.remove(codLivro);
         
+    }
+    
+    public Emprestimo getEmprestimoCodLivro(int codLivro){
+        return emprestimos.get(codLivro);
     }
     
     

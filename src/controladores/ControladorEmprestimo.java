@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import mapeadores.MapeadorEmprestimo;
 import mapeadores.MapeadorLivro;
 import telas.TelaEmprestimo;
+import telas.TelaGerenciaEmprestimo;
 
 /**
  *
@@ -24,6 +25,7 @@ public class ControladorEmprestimo {
     
     private ControladorPrincipal ctrl_principal;
     private TelaEmprestimo telaEmprestimo;
+    private TelaGerenciaEmprestimo telaGerenciaEmprestimo;
     private MapeadorEmprestimo map;
     
     
@@ -32,6 +34,7 @@ public class ControladorEmprestimo {
         this.ctrl_principal = ctrl_principal;       
         this.map = new MapeadorEmprestimo();
         this.telaEmprestimo = new TelaEmprestimo(this);
+        this.telaGerenciaEmprestimo = new TelaGerenciaEmprestimo(this);
         
     }
     
@@ -47,7 +50,9 @@ public class ControladorEmprestimo {
             livro.setDisponivel(false);
             put(novo);
             persist();
-            System.out.println(novo.getLivroEmprestado() + "" + novo.getCliente());
+            System.out.println(novo.getLivroEmprestado().getCodigo() + " " + novo.getCliente().getNome());
+            System.out.println(novo.getDataEmprestimo().toString() + " " + novo.getDataPrevistaDevolucao().toString());
+            System.out.println(livro.getDisponivel());
         } catch (Exception ex) {
             }
         
@@ -57,15 +62,20 @@ public class ControladorEmprestimo {
     
 
     public void devolverLivro(Integer codigoLivro){
-        try{
-            Livro livro = ctrl_principal.getControladorCadastroLivro().getLivro(codigoLivro);
-            map.encerraEmprestimo(codigoLivro);
-            livro.setDisponivel(true);
-            
-
-        }catch(Exception ex){
-            
+//        try{
+//            Livro livro = ctrl_principal.getControladorCadastroLivro().getLivro(codigoLivro);
+//            map.encerraEmprestimo(codigoLivro);
+//            livro.setDisponivel(true);
+//        }catch(Exception ex){
+//           }
+        Emprestimo emprestimo = getEmprestimoCodLivro(codigoLivro);
+        long dias = emprestimo.getDiasAtraso();
+        if(dias < 0){
+            emprestimo.calculaMulta();
         }
+        Livro livro = emprestimo.getLivroEmprestado();
+        map.encerraEmprestimo(codigoLivro);
+        livro.setDisponivel(true);
     }
     
     public void put(Emprestimo emprestimo){
@@ -79,8 +89,17 @@ public class ControladorEmprestimo {
     public void exibeTelaCadastroEmprestimo(){
         telaEmprestimo.setVisible(true);
     }
+    
+    public void exibeTelaGerenciaEmprestimo(){
+        telaGerenciaEmprestimo.setVisible(true);
+    }
 
     public boolean existeMatricula(Integer codCliente) {
         return ctrl_principal.existeMatricula(codCliente);
     }
+    
+    public Emprestimo getEmprestimoCodLivro(int codLivro){
+        return map.getEmprestimoCodLivro(codLivro);
+    }
+    
 }

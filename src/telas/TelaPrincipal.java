@@ -213,7 +213,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbExcluirLivroActionPerformed
 
     private void jbEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEmprestarActionPerformed
-        ctrl_emprestimo.exibeTelaCadastroEmprestimo();
+        ctrl_emprestimo.exibeTelaGerenciaEmprestimo();
     }//GEN-LAST:event_jbEmprestarActionPerformed
 
     /**

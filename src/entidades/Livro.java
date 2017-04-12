@@ -57,6 +57,12 @@ public class Livro implements Serializable {
         this.disponivel = disponivel;
     }
     
+    public boolean getDisponivel(){
+        return this.disponivel;
+    }
+    
+    
+    
     
     
     
