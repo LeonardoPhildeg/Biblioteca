@@ -122,4 +122,10 @@ public class ControladorPrincipal {
     public boolean getDisponivel(int codigo){
         return ctrl_cadastro_livro.getDisponivel(codigo);
     }
+
+    public void salvarTudo() throws IOException {
+        ctrl_cadastro_cliente.persist();
+        ctrl_cadastro_livro.persist();
+        ctrl_emprestimo.persist();
+    }
 }
