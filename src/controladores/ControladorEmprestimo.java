@@ -63,17 +63,9 @@ public class ControladorEmprestimo {
     
 
     public void devolverLivro(Integer codigoLivro){
-//        try{
-//            Livro livro = ctrl_principal.getControladorCadastroLivro().getLivro(codigoLivro);
-//            map.encerraEmprestimo(codigoLivro);
-//            livro.setDisponivel(true);
-//        }catch(Exception ex){
-//           }
+
         Emprestimo emprestimo = getEmprestimoCodLivro(codigoLivro);
-        long dias = emprestimo.getDiasAtraso();
-        if(dias < 0){
-            emprestimo.calculaMulta();
-        }
+
         Livro livro = emprestimo.getLivroEmprestado();
         map.encerraEmprestimo(codigoLivro);
         livro.setDisponivel(true);

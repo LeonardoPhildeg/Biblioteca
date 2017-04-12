@@ -69,6 +69,11 @@ public class TelaGerenciaEmprestimo extends javax.swing.JFrame {
         });
 
         jbDevolucao.setText("Devolução");
+        jbDevolucao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDevolucaoActionPerformed(evt);
+            }
+        });
 
         jbVoltar.setText("Voltar");
         jbVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +136,27 @@ public class TelaGerenciaEmprestimo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         listarEmprestimos();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jbDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDevolucaoActionPerformed
+        DefaultTableModel modelTb = (DefaultTableModel) jtTabelaEmprestimos.getModel();
+        for(Emprestimo emprestimo : ctrl_emprestimo.getListaEmprestimos()){
+            
+            if(modelTb.getValueAt(jtTabelaEmprestimos.getSelectedRow(), 0).toString() == emprestimo.getLivroEmprestado().getNome()){
+                Integer codigo = emprestimo.getLivroEmprestado().getCodigo();
+                emprestimo = ctrl_emprestimo.getEmprestimoCodLivro(codigo);
+                if(emprestimo.getDiasAtraso() > 0){
+                    JOptionPane.showMessageDialog(this, emprestimo.calculaMulta() + " " + "real(is) de multa pelo atraso");
+                }
+                ctrl_emprestimo.devolverLivro(codigo);
+                modelTb.removeRow(jtTabelaEmprestimos.getSelectedRow());       
+            }
+        }
+//        System.out.println(modelTb.getValueAt(jtTabelaEmprestimos.getSelectedRow(), 0).toString() );
+        
+        
+        
+        
+    }//GEN-LAST:event_jbDevolucaoActionPerformed
 
     /**
      * @param args the command line arguments
