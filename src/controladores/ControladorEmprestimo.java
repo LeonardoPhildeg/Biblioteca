@@ -10,6 +10,7 @@ import entidades.Emprestimo;
 import entidades.Livro;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mapeadores.MapeadorEmprestimo;
@@ -102,4 +103,11 @@ public class ControladorEmprestimo {
         return map.getEmprestimoCodLivro(codLivro);
     }
     
+    public Collection <Emprestimo> getListaEmprestimos(){
+        return map.getListaEmprestimos();
+    }
+    
+    public boolean getDisponivel(int codigo){
+        return ctrl_principal.getDisponivel(codigo);
+    }
 }

@@ -8,7 +8,10 @@ package telas;
 import controladores.ControladorEmprestimo;
 import excecoes.CampoVazioException;
 import excecoes.ClienteInexistenteException;
+import excecoes.LivroNaoDisponivelException;
 import java.awt.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import mapeadores.MapeadorCliente;
 
@@ -141,23 +144,24 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         Integer codLivro = Integer.parseInt(jtfCodLivro.getText());
         Integer codCliente = Integer.parseInt(jtfCodCliente.getText());
             
+            if(!ctrl_emprestimo.getDisponivel(codLivro)){
+                throw new LivroNaoDisponivelException();
+            }
+        
             if(!ctrl_emprestimo.existeMatricula(codCliente)){
                 throw new ClienteInexistenteException();
            }
             ctrl_emprestimo.cadastrarEmprestimo(codLivro, codCliente);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
+            limparCampos();
 
         } catch (CampoVazioException | ClienteInexistenteException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
             limparCampos();
+        } catch (LivroNaoDisponivelException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            limparCampos();
         }
-//        catch (ClienteInexistenteException ex) {
-//            JOptionPane.showMessageDialog(null, ex.getMessage());
-//        }
-        
-//        catch (ClienteInexistenteException ex) {
-//            JOptionPane.showMessageDialog(null, ex.getMessage());
-//        } 
     
     }//GEN-LAST:event_jbCadastrarActionPerformed
 

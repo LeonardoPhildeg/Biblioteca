@@ -258,7 +258,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         for (Livro livro: ctrl_principal.getLivros()) {
             encontrou = false;
             String disponibilidade;
-            if (livro.isDisponivel()) {
+            if (livro.getDisponivel()) {
                 disponibilidade = "Disponível";
             } else {
                 disponibilidade = "Emprestado";

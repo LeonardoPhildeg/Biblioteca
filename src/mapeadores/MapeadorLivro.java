@@ -88,4 +88,16 @@ public class MapeadorLivro implements Serializable{
     public boolean existeNome(String nome){
         return livros.containsValue(nome);
     }
+    
+    public boolean getDisponivel(int codigo){
+          Livro livro = get(codigo);
+          
+          for(Livro livros : livros.values()){
+              if(livro.getDisponivel()){
+                  return true;
+              }
+          }
+ 
+        return false;
+    }
 }

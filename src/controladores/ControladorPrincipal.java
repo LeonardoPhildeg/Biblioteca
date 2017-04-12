@@ -6,6 +6,7 @@
 package controladores;
 
 import entidades.Cliente;
+import entidades.Emprestimo;
 import entidades.Livro;
 import entidades.Usuario;
 import java.io.FileNotFoundException;
@@ -118,4 +119,7 @@ public class ControladorPrincipal {
         return this.usuarios;
     }
     
+    public boolean getDisponivel(int codigo){
+        return ctrl_cadastro_livro.getDisponivel(codigo);
+    }
 }

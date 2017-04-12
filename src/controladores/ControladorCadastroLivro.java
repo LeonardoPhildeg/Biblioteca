@@ -63,4 +63,8 @@ public class ControladorCadastroLivro {
             throw new Exception("Livro não existe");
         }
     }
+    
+    public boolean getDisponivel(int codigo){
+        return map.getDisponivel(codigo);
+    }
 }
