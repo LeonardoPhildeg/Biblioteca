@@ -8,6 +8,7 @@ package telas;
 import controladores.ControladorEmprestimo;
 import controladores.ControladorPrincipal;
 import entidades.Livro;
+import excecoes.LivroEmprestadoException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.ctrl_emprestimo = ctrl_emprestimo;
         initComponents();
         this.setLocationRelativeTo(null);
+        listarLivros();
     }
 
     /**
@@ -45,7 +47,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jbEmprestar = new javax.swing.JButton();
-        jbDevolver = new javax.swing.JButton();
         jbCadastrar = new javax.swing.JButton();
         jbExcluirLivro = new javax.swing.JButton();
         jbCadastrarCliente = new javax.swing.JButton();
@@ -73,14 +74,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jbEmprestar.setText("Empréstimo");
+        jbEmprestar.setText("Gerenciar Empréstimos");
         jbEmprestar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEmprestarActionPerformed(evt);
             }
         });
-
-        jbDevolver.setText("Devolução");
 
         jbCadastrar.setText("Cadastrar Livro");
         jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,12 +123,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jbExcluirLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
+                        .addGap(46, 46, 46)
                         .addComponent(jbCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(51, 51, 51)
                         .addComponent(jbEmprestar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(jbDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(159, 159, 159)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -140,7 +138,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbEmprestar)
-                    .addComponent(jbDevolver)
                     .addComponent(jbCadastrar)
                     .addComponent(jbExcluirLivro)
                     .addComponent(jbCadastrarCliente)
@@ -204,10 +201,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jbExcluirLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirLivroActionPerformed
         try {
             DefaultTableModel modelTb = (DefaultTableModel) jTable1.getModel();
-            ctrl_principal.excluirLivro(Integer.parseInt(modelTb.getValueAt(jTable1.getSelectedRow(), 1).toString()));
-            modelTb.removeRow(jTable1.getSelectedRow());
+            if ((modelTb.getValueAt(jTable1.getSelectedRow(), 3).equals("Disponível")))  {
+                ctrl_principal.excluirLivro(Integer.parseInt(modelTb.getValueAt(jTable1.getSelectedRow(), 1).toString()));
+                modelTb.removeRow(jTable1.getSelectedRow());
+            } else {
+                throw new LivroEmprestadoException();
+            }
         } catch (IOException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LivroEmprestadoException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
         listarLivros();
     }//GEN-LAST:event_jbExcluirLivroActionPerformed
@@ -229,7 +232,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbAtualizar;
     private javax.swing.JButton jbCadastrar;
     private javax.swing.JButton jbCadastrarCliente;
-    private javax.swing.JButton jbDevolver;
     private javax.swing.JButton jbEmprestar;
     private javax.swing.JButton jbExcluirLivro;
     // End of variables declaration//GEN-END:variables
@@ -255,15 +257,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
             for(int i = 0; i < modelTb.getRowCount(); i++) {
                 if (Integer.parseInt(modelTb.getValueAt(i, 1).toString())==livro.getCodigo()){
                     encontrou = true;
+                    modelTb.setValueAt(disponibilidade, i, 3);
                 }
             }
+            
             if (!encontrou){
                 modelTb.addRow(new Object[]{livro.getNome(), livro.getCodigo(), livro.getAutor(), disponibilidade});
             }  
         }//fim do for
-        if (tamanhoTabela >= modelTb.getRowCount()){
+        /*if (tamanhoTabela >= modelTb.getRowCount()){
             JOptionPane.showMessageDialog(this, "Não existe algo para atualizar");
-        }
+        }*/
     }
 
 }

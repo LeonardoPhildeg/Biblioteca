@@ -37,15 +37,13 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jtNome = new javax.swing.JTextField();
         jtAutor = new javax.swing.JTextField();
         jtCodigo = new javax.swing.JTextField();
-        jcbDisponibilidade = new javax.swing.JComboBox<>();
         jbCadastar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -55,30 +53,24 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
 
         jLabel3.setText("Código:");
 
-        jLabel4.setText("Disponibilidade:");
-
         jtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtNomeActionPerformed(evt);
             }
         });
 
-        jcbDisponibilidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jcbDisponibilidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtNome)
                     .addComponent(jtAutor)
                     .addComponent(jtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
@@ -99,11 +91,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jcbDisponibilidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         jbCadastar.setText("Cadastrar");
@@ -113,7 +101,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
             }
         });
 
-        jbCancelar.setText("Cancelar");
+        jbCancelar.setText("Voltar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCancelarActionPerformed(evt);
@@ -143,7 +131,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCadastar)
                     .addComponent(jbCancelar))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,18 +149,10 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
                 throw new CampoVazioException();
             }
         int codigo = Integer.parseInt(jtCodigo.getText());
-        boolean disponibilidade;
-        String value = jcbDisponibilidade.getSelectedItem().toString();
-        
-        if(value.equals("Sim")){
-            disponibilidade = true;
-        }else{
-            disponibilidade = false;
-        }
             if(nome.isEmpty() || autor.isEmpty()){
                 throw new CampoVazioException();
             }
-            controladorCadastroLivro.cadastrarLivro(nome, codigo, autor, disponibilidade);
+            controladorCadastroLivro.cadastrarLivro(nome, codigo, autor, true);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
             limparCampos();
         } catch (IOException ex) {
@@ -202,11 +182,9 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbCadastar;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JComboBox<String> jcbDisponibilidade;
     private javax.swing.JTextField jtAutor;
     private javax.swing.JTextField jtCodigo;
     private javax.swing.JTextField jtNome;
