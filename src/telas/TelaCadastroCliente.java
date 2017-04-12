@@ -44,7 +44,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jbCadastrar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -164,7 +164,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        setVisible(false);
+        controladorCadastroCliente.listarClientes();
+        dispose();
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**

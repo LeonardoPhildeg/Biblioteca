@@ -26,7 +26,7 @@ public class ControladorPrincipal {
     private ControladorAcesso ctrl_acesso;
     private ArrayList <Usuario> usuarios;
     private ControladorCadastroCliente ctrl_cadastro_cliente;
-    private TelaPrincipal telaGerente;
+    private TelaPrincipal telaPrincipal;
     private TelaListaCliente telaListaCliente;
     private ControladorCadastroLivro ctrl_cadastro_livro;
     private ControladorEmprestimo ctrl_emprestimo;
@@ -38,7 +38,7 @@ public class ControladorPrincipal {
         this.ctrl_cadastro_livro = new ControladorCadastroLivro(this);
         this.ctrl_emprestimo = new ControladorEmprestimo(this);
         this.telaListaCliente = new TelaListaCliente(this);
-        this.telaGerente = new TelaPrincipal(this, ctrl_emprestimo);
+        this.telaPrincipal = new TelaPrincipal(this, ctrl_emprestimo);
         this.usuarios = new ArrayList<>();
 
     }
@@ -69,11 +69,11 @@ public class ControladorPrincipal {
     }
 
     public void exibeTelaFunc() {
-        telaGerente.exibeTelaFunc();
+        telaPrincipal.exibeTelaFunc();
     }
 
     public void exibeTelaGerente() {
-        telaGerente.setVisible(true);
+        telaPrincipal.setVisible(true);
     }
     
     public void exibeTelaCadastroCliente(){
@@ -121,5 +121,19 @@ public class ControladorPrincipal {
     
     public boolean getDisponivel(int codigo){
         return ctrl_cadastro_livro.getDisponivel(codigo);
+    }
+
+    public void salvarTudo() throws IOException {
+        ctrl_cadastro_cliente.persist();
+        ctrl_cadastro_livro.persist();
+        ctrl_emprestimo.persist();
+    }
+
+    public void listarLivros() {
+        this.telaPrincipal.listarLivros();
+    }
+
+    void listarClientes() {
+        this.telaListaCliente.atualizar();
     }
 }

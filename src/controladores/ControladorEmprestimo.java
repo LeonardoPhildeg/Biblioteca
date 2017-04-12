@@ -50,7 +50,6 @@ public class ControladorEmprestimo {
             Emprestimo novo = new Emprestimo(livro, cliente);
             livro.setDisponivel(false);
             put(novo);
-            persist();
             System.out.println(novo.getLivroEmprestado().getCodigo() + " " + novo.getCliente().getNome());
             System.out.println(novo.getDataEmprestimo().toString() + " " + novo.getDataPrevistaDevolucao().toString());
             System.out.println(livro.getDisponivel());
@@ -101,5 +100,13 @@ public class ControladorEmprestimo {
     
     public boolean getDisponivel(int codigo){
         return ctrl_principal.getDisponivel(codigo);
+    }
+
+    public void listarEmprestimos() {
+        this.telaGerenciaEmprestimo.listarEmprestimos();
+    }
+
+    public void listarLivros() {
+        ctrl_principal.listarLivros();
     }
 }
