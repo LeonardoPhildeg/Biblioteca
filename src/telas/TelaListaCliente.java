@@ -41,12 +41,13 @@ public class TelaListaCliente extends javax.swing.JFrame {
         bjCadastrar = new javax.swing.JButton();
         jbExcluir = new javax.swing.JButton();
         jbAtualizar = new javax.swing.JButton();
+        jbVoltar = new javax.swing.JButton();
 
         jButton2.setText("Cadastrar");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gerenciador de Clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gerenciador de Clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,22 +90,31 @@ public class TelaListaCliente extends javax.swing.JFrame {
             }
         });
 
+        jbVoltar.setText("Voltar");
+        jbVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(bjCadastrar)
-                        .addGap(34, 34, 34)
+                        .addGap(43, 43, 43)
+                        .addComponent(jbVoltar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(jbAtualizar)))
+                        .addGap(40, 40, 40)
+                        .addComponent(jbAtualizar)
+                        .addGap(36, 36, 36)
+                        .addComponent(bjCadastrar)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -116,7 +126,8 @@ public class TelaListaCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bjCadastrar)
                     .addComponent(jbExcluir)
-                    .addComponent(jbAtualizar))
+                    .addComponent(jbAtualizar)
+                    .addComponent(jbVoltar))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -148,6 +159,10 @@ public class TelaListaCliente extends javax.swing.JFrame {
         atualizar();
     }//GEN-LAST:event_jbAtualizarActionPerformed
 
+    private void jbVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -161,6 +176,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JButton jbAtualizar;
     private javax.swing.JButton jbExcluir;
+    private javax.swing.JButton jbVoltar;
     // End of variables declaration//GEN-END:variables
     
     public void atualizar() {

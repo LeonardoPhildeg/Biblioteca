@@ -87,7 +87,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
                 .addContainerGap(131, Short.MAX_VALUE))
         );
 
-        jbCancelar.setText("Cancelar");
+        jbCancelar.setText("Voltar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCancelarActionPerformed(evt);
