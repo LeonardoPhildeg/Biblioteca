@@ -6,6 +6,8 @@
 package telas;
 
 import controladores.ControladorAcesso;
+import entidades.Usuario;
+import excecoes.UsuarioInexistenteException;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +21,7 @@ public class TelaAcesso extends javax.swing.JFrame {
     public TelaAcesso(ControladorAcesso ctrl_acesso) {
         this.ctrl_acesso = ctrl_acesso;
         initComponents();
+        getRootPane().setDefaultButton(jbEntrar);
         this.setLocationRelativeTo(null);
     }
 
@@ -136,17 +139,23 @@ public class TelaAcesso extends javax.swing.JFrame {
     }//GEN-LAST:event_jbSairActionPerformed
 
     private void jbEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarActionPerformed
-        boolean usuario = ctrl_acesso.logar(jtfUsuario.getText(), (new String (jpfSenha.getPassword())));
-        boolean logar = ctrl_acesso.getPermissao(jtfUsuario.getText()); 
-        
-        if(usuario) {
-            if (logar) {
-                ctrl_acesso.exibeTelaGerente();
+        try { 
+            Usuario usuario = ctrl_acesso.compararUsuarioSenha(jtfUsuario.getText(), (new String (jpfSenha.getPassword())));
+            if (usuario != null) {
+                boolean logar = ctrl_acesso.getPermissao(jtfUsuario.getText()); 
+                if (logar) {
+                    ctrl_acesso.exibeTelaGerente();
+                } else {
+                    ctrl_acesso.exibeTelaFunc();
+                }
+                setVisible(false);
             } else {
-                ctrl_acesso.exibeTelaFunc();
+                throw new UsuarioInexistenteException();
             }
-        } 
-        setVisible(false);
+            
+        } catch (UsuarioInexistenteException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }//GEN-LAST:event_jbEntrarActionPerformed
     
     

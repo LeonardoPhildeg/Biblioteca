@@ -195,9 +195,11 @@ public class TelaListaCliente extends javax.swing.JFrame {
                 modelTb.addRow(new Object[]{cliente.getNome(), cliente.getMatricula()});
             }  
         }//fim do for
-        if (tamanhoTabela >= modelTb.getRowCount()){
-            JOptionPane.showMessageDialog(this, "Não existe algo para atualizar");
-        }
+    }
+
+    public void exibeTela() {
+        setVisible(true);
+        atualizar();
     }
     
 }
