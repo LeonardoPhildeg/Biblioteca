@@ -166,7 +166,8 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCadastarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        setVisible(false);
+        controladorCadastroLivro.listarLivros();
+        dispose();
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**

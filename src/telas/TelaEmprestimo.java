@@ -47,7 +47,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         jbCancelar = new javax.swing.JButton();
         jbCadastrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Emprestimos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -170,6 +170,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfCodLivroActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        ctrl_emprestimo.listarEmprestimos();
         dispose();
     }//GEN-LAST:event_jbCancelarActionPerformed
     

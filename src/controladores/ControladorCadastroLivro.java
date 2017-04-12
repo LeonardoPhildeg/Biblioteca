@@ -32,7 +32,6 @@ public class ControladorCadastroLivro {
     public void cadastrarLivro(String nome, int codigo, String autor, boolean disponivel) throws IOException{
         Livro livro = new Livro(nome, codigo, autor, disponivel);
         put(livro);
-        persist();
     }
     
     public void put(Livro livro){
@@ -66,5 +65,9 @@ public class ControladorCadastroLivro {
     
     public boolean getDisponivel(int codigo){
         return map.getDisponivel(codigo);
+    }
+
+    public void listarLivros() {
+        ctrl_controlador_principal.listarLivros();
     }
 }

@@ -52,7 +52,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jbCadastrarCliente = new javax.swing.JButton();
         jbAtualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -206,27 +211,43 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jbExcluirLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirLivroActionPerformed
         try {
             DefaultTableModel modelTb = (DefaultTableModel) jTable1.getModel();
-            if ((modelTb.getValueAt(jTable1.getSelectedRow(), 3).equals("Disponível")))  {
-                ctrl_principal.excluirLivro(Integer.parseInt(modelTb.getValueAt(jTable1.getSelectedRow(), 1).toString()));
-                modelTb.removeRow(jTable1.getSelectedRow());
+            if (jTable1.getSelectedRow() > 0) {
+                if ((modelTb.getValueAt(jTable1.getSelectedRow(), 3).equals("Disponível")))  {
+                    ctrl_principal.excluirLivro(Integer.parseInt(modelTb.getValueAt(jTable1.getSelectedRow(), 1).toString()));
+                    modelTb.removeRow(jTable1.getSelectedRow());
+                } else {
+                    throw new LivroEmprestadoException();
+                }
             } else {
-                throw new LivroEmprestadoException();
+                throw new ArrayIndexOutOfBoundsException();
             }
         } catch (IOException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LivroEmprestadoException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Você precisa selecionar um livro");
         }
         listarLivros();
     }//GEN-LAST:event_jbExcluirLivroActionPerformed
 
     private void jbEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEmprestarActionPerformed
         ctrl_emprestimo.exibeTelaGerenciaEmprestimo();
+        ctrl_emprestimo.listarEmprestimos();
     }//GEN-LAST:event_jbEmprestarActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         
     }//GEN-LAST:event_formKeyPressed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        try {
+            ctrl_principal.salvarTudo();
+            dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -251,7 +272,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setVisible(true);
     }
 
-    private void listarLivros() {
+    public void listarLivros() {
         DefaultTableModel modelTb = (DefaultTableModel) jTable1.getModel();
         int tamanhoTabela = modelTb.getRowCount();
         boolean encontrou;
