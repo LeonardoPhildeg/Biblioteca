@@ -34,7 +34,6 @@ public class ControladorCadastroCliente {
     public void criarCliente(String nome, int matricula) throws IOException{
         Cliente cliente = new Cliente(nome, matricula);
         put(cliente);
-        persist();
     }
     
     public Cliente getMatricula(int matricula){

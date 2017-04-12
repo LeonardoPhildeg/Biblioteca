@@ -6,7 +6,6 @@
 package mapeadores;
 
 import entidades.Emprestimo;
-import entidades.Livro;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

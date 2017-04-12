@@ -10,6 +10,7 @@ import entidades.Emprestimo;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -23,6 +24,7 @@ public class TelaGerenciaEmprestimo extends javax.swing.JFrame {
         this.ctrl_emprestimo = ctrlEmprestimo;
         initComponents();
         this.setLocationRelativeTo(null);
+        ocultarColuna();
     }
 
     /**
@@ -41,18 +43,18 @@ public class TelaGerenciaEmprestimo extends javax.swing.JFrame {
         jbVoltar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jtTabelaEmprestimos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Livro", "Cliente", "Data Empréstimo", "Data Devolução"
+                "Livro", "Cliente", "Data Empréstimo", "Data Devolução", "Cod_Livro"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -155,7 +157,7 @@ public class TelaGerenciaEmprestimo extends javax.swing.JFrame {
         for(Emprestimo emprestimo : ctrl_emprestimo.getListaEmprestimos()){
             encontrou = false;
             for(int i = 0; i < modelTb.getRowCount(); i++) {
-                if (Integer.parseInt(modelTb.getValueAt(i, 1).toString()) == emprestimo.getLivroEmprestado().getCodigo()){
+                if (Integer.parseInt(modelTb.getValueAt(i, 4).toString()) == emprestimo.getLivroEmprestado().getCodigo()){
                     encontrou = true;
 //                    modelTb.setValueAt(emprestimo.getLivroEmprestado().getNome(), i, 1);
 //                    modelTb.setValueAt(emprestimo.getCliente().getNome(), i, 2);
@@ -168,14 +170,18 @@ public class TelaGerenciaEmprestimo extends javax.swing.JFrame {
                     format.format(emprestimo.getDataEmprestimo()), format.format((emprestimo.getDataPrevistaDevolucao()))  });
             }
         }
-           if (tamanhoTabela >= modelTb.getRowCount()){
-                JOptionPane.showMessageDialog(this, "Não existe algo para atualizar");
-        }
-        
-        
-        
+        /*if (tamanhoTabela >= modelTb.getRowCount()){
+            JOptionPane.showMessageDialog(this, "Não existe algo para atualizar");
+        } */
     }
 
  //modelTb.getValueAt(i, 1).toString()==(emprestimo.getLivroEmprestado().getNome())
+
+    private void ocultarColuna() {
+        TableColumnModel  colunaModelo = jtTabelaEmprestimos.getColumnModel();      
+        colunaModelo.getColumn(4).setMinWidth(0);     
+        colunaModelo.getColumn(4).setPreferredWidth(0);  
+        colunaModelo.getColumn(4).setMaxWidth(0);   
+    }
 
 }

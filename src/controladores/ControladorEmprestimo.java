@@ -11,10 +11,7 @@ import entidades.Livro;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import mapeadores.MapeadorEmprestimo;
-import mapeadores.MapeadorLivro;
 import telas.TelaEmprestimo;
 import telas.TelaGerenciaEmprestimo;
 
@@ -50,7 +47,6 @@ public class ControladorEmprestimo {
             Emprestimo novo = new Emprestimo(livro, cliente);
             livro.setDisponivel(false);
             put(novo);
-            persist();
             System.out.println(novo.getLivroEmprestado().getCodigo() + " " + novo.getCliente().getNome());
             System.out.println(novo.getDataEmprestimo().toString() + " " + novo.getDataPrevistaDevolucao().toString());
             System.out.println(livro.getDisponivel());
